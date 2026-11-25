@@ -1,0 +1,62 @@
+<!doctype html>
+<html lang="ko">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <meta name="theme-color" content="#f4f7fb" />
+    <title>CLASS FEEDBACK</title>
+    <link rel="stylesheet" href="./styles.css" />
+  </head>
+  <body>
+    <header class="app-header">
+      <h1>CLASS FEEDBACK</h1>
+      <button id="admin-login-button" class="text-button" type="button">관리자 로그인</button>
+      <button id="logout-button" class="text-button" type="button" hidden>로그아웃</button>
+    </header>
+
+    <main>
+      <section id="student-view" class="view student-view" aria-labelledby="question">
+        <h2 id="question">오늘 수업은 어땠나요?</h2>
+        <div class="rating-buttons" aria-label="수업 만족도 투표">
+          <button class="rating-button satisfied" type="button" data-rating="만족"><span aria-hidden="true">😊</span><span>만족</span></button>
+          <button class="rating-button neutral" type="button" data-rating="보통"><span aria-hidden="true">😐</span><span>보통</span></button>
+          <button class="rating-button dissatisfied" type="button" data-rating="불만족"><span aria-hidden="true">😞</span><span>불만족</span></button>
+        </div>
+        <p id="vote-message" class="status-message" role="status"></p>
+      </section>
+
+      <section id="login-view" class="view login-view" aria-labelledby="login-title" hidden>
+        <form id="login-form" class="card">
+          <h2 id="login-title">관리자 로그인</h2>
+          <label for="email">이메일</label>
+          <input id="email" name="email" type="email" autocomplete="username" required />
+          <label for="password">비밀번호</label>
+          <input id="password" name="password" type="password" autocomplete="current-password" required />
+          <p id="login-error" class="error-message" role="alert"></p>
+          <button class="primary-button" type="submit">로그인</button>
+        </form>
+      </section>
+
+      <section id="admin-view" class="view admin-view" aria-labelledby="admin-title" hidden>
+        <div class="admin-heading">
+          <h2 id="admin-title">투표 결과</h2>
+          <button id="refresh-button" class="secondary-button" type="button">새로고침</button>
+        </div>
+        <div class="stats-grid">
+          <article class="stat-card total-card"><span class="stat-label">전체 투표 수</span><strong id="total-count">0</strong></article>
+          <article class="stat-card"><span class="stat-label">만족</span><strong id="satisfied-count">0</strong><span id="satisfied-rate" class="rate">0%</span></article>
+          <article class="stat-card"><span class="stat-label">보통</span><strong id="neutral-count">0</strong><span id="neutral-rate" class="rate">0%</span></article>
+          <article class="stat-card"><span class="stat-label">불만족</span><strong id="dissatisfied-count">0</strong><span id="dissatisfied-rate" class="rate">0%</span></article>
+        </div>
+        <div class="chart-card">
+          <div class="bar-row"><span class="bar-label"><span aria-hidden="true">😊</span> 만족</span><div class="bar-track"><div id="satisfied-bar" class="bar satisfied-bar"></div></div><span id="satisfied-bar-count" class="bar-count">0</span></div>
+          <div class="bar-row"><span class="bar-label"><span aria-hidden="true">😐</span> 보통</span><div class="bar-track"><div id="neutral-bar" class="bar neutral-bar"></div></div><span id="neutral-bar-count" class="bar-count">0</span></div>
+          <div class="bar-row"><span class="bar-label"><span aria-hidden="true">😞</span> 불만족</span><div class="bar-track"><div id="dissatisfied-bar" class="bar dissatisfied-bar"></div></div><span id="dissatisfied-bar-count" class="bar-count">0</span></div>
+        </div>
+        <button id="reset-button" class="danger-button" type="button">투표 결과 초기화</button>
+        <p id="admin-message" class="status-message" role="status"></p>
+      </section>
+    </main>
+    <script type="module" src="./app.js"></script>
+  </body>
+</html>
